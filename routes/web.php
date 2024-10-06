@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Controllers\OfferContoller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +24,12 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('/redirect/{service}', 'SocialController@redirect');
 
 Route::get('/callback/{service}', 'SocialController@callback');
+
+
+Route::group(['prefix'=>'offers'],function(){
+
+Route::get('create','OfferController@create');
+
+Route::post('store', 'OfferController@store') ->name('offers.store');
+
+} );
