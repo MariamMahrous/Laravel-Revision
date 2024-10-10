@@ -21,11 +21,9 @@ return[
 'done'=>'the offer saved successfuly',
 'all offer' =>'All Offer',
 'number'=>'Number',
-'name_ar all' =>'Name Ar',
-'name_en all'=>'Name En',
+'name offer' =>'Offer Name',
 'price all'=>'Price',
-'details_ar all'=>'Details Ar',
-'details_en all'=>'Details En',
+'details offer'=>'Offer Details',
 
 
 

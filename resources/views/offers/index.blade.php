@@ -116,23 +116,21 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">{{__('message.number')}}</th>
-      <th scope="col">{{__('message.name_ar all')}}</th>
-      <th scope="col">{{__('message.name_en all')}}</th>
+      <th scope="col">#</th>
+      <th scope="col">{{__('message.name offer')}}</th>
       <th scope="col">{{__('message.price all')}}</th>
-      <th scope="col">{{__('message.details_ar all')}}</th>
-      <th scope="col">{{__('message.details_en all')}}</th>
+      <th scope="col">{{__('message.details offer')}}</th>
+      
     </tr>
   </thead>
   <tbody>
     @foreach($offers as $offer)
     <tr>
       <th scope="row">{{$offer->id}}</th>
-      <td>{{$offer->name_ar}}</td>
-      <td>{{$offer->name_en}}</td>
+      <td>{{$offer->name}}</td>
       <td>{{$offer->price}}</td>
-      <td>{{$offer->details_ar}}</td>
-      <td>{{$offer->details_en}}</td>
+      <td>{{$offer->details}}</td>
+
     </tr>
    @endforeach
   </tbody>

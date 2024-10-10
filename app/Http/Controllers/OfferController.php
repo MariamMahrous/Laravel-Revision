@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Http\Requests\OfferRequest;
 use Illuminate\Support\Facades\Validator;
+use LaravelLocalization;
 
 
 class OfferController extends Controller
@@ -65,7 +66,11 @@ class OfferController extends Controller
 
 public function getAllOffers(){
 
- $offers=Offer::select('id','name_ar','name_en','price','details_ar','details_en')->get();
+ $offers=Offer::select('id',
+ 'price',
+ 'name_' . LaravelLocalization::getCurrentLocale() .  ' as name',
+ 'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
+ )->get();
  return view('offers.index',compact('offers'));
 
 

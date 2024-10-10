@@ -22,11 +22,10 @@ return[
 'done'=>'تم اضافة العرض بنجاح',
 'all offer' => 'جميع العروض',
 'number'=>'الرقم',
-'name_ar all' =>'الاسم بالعربى',
-'name_en all'=>'الاسم بالانجليزى',
-'price all'=>'السعر',
-'details_ar all'=>'التفاصيل بالعربى',
-'details_en all'=>'التفاصيل بالانجليزى',
+'name offer' =>'اسم العرض',
+'price all' =>'السعر',
+'details offer' =>'تفاصيل العرض',
+
 
 
 
