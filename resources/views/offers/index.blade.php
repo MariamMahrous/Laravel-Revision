@@ -104,7 +104,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                 {{__('message.add offer')}}
+                 {{__('message.all offer')}}
                 </div>
                 
 @if(Session::has('success'))
@@ -113,46 +113,30 @@
 </div>
 @endif
 <br>
-                <form method="POST"  action="{{route('offers.store')}}">
-                    @csrf
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">{{__('message.name_ar')}}</label>
-    <input type="text" class="form-control" name='name_ar' aria-describedby="emailHelp">
-    @error('name_ar')
-    <small class="form-text text-danger">{{$message}}</small>
- @enderror
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">{{__('message.name_en')}}</label>
-    <input type="text" class="form-control" name='name_en' aria-describedby="emailHelp">
-    @error('name_en')
-    <small class="form-text text-danger">{{$message}}</small>
- @enderror
-  </div>
- 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">{{__('message.price')}}</label>
-    <input type="text" class="form-control" name='price' aria-describedby="emailHelp">
-@error('price')
-<small class="form-text text-danger">{{$message}}</small>
-@enderror
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">{{__('message.details_ar')}}</label>
-    <input type="text" class="form-control" name='details_ar' aria-describedby="emailHelp">
-   @error('details_ar')
-   <small class="form-text text-danger">{{$message}}</small>
-   @enderror
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">{{__  ('message.details_en')}}</label>
-    <input type="text" class="form-control" name='details_en' aria-describedby="emailHelp">
-   @error('details_en')
-   <small class="form-text text-danger">{{$message}}</small>
-   @enderror
-  </div>
-  <button type="submit" class="btn btn-primary">{{__('message.save offer')}}</button>
-</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">{{__('message.number')}}</th>
+      <th scope="col">{{__('message.name_ar all')}}</th>
+      <th scope="col">{{__('message.name_en all')}}</th>
+      <th scope="col">{{__('message.price all')}}</th>
+      <th scope="col">{{__('message.details_ar all')}}</th>
+      <th scope="col">{{__('message.details_en all')}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($offers as $offer)
+    <tr>
+      <th scope="row">{{$offer->id}}</th>
+      <td>{{$offer->name_ar}}</td>
+      <td>{{$offer->name_en}}</td>
+      <td>{{$offer->price}}</td>
+      <td>{{$offer->details_ar}}</td>
+      <td>{{$offer->details_en}}</td>
+    </tr>
+   @endforeach
+  </tbody>
+</table>  
              
             </div>
         </div>

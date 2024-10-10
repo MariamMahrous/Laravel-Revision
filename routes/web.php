@@ -26,10 +26,15 @@ Route::get('/redirect/{service}', 'SocialController@redirect');
 Route::get('/callback/{service}', 'SocialController@callback');
 
 
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
+{
 Route::group(['prefix'=>'offers'],function(){
 
 Route::get('create','OfferController@create');
 
 Route::post('store', 'OfferController@store') ->name('offers.store');
 
+Route::get('index','OfferController@getAllOffers');
+
 } );
+});
