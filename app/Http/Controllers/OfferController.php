@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
+use App\Traits\OfferTrait;
 use App\Http\Requests\OfferRequest;
 use Illuminate\Support\Facades\Validator;
 use LaravelLocalization;
@@ -10,6 +11,10 @@ use LaravelLocalization;
 
 class OfferController extends Controller
 {
+
+
+    use OfferTrait;
+    
     public function create()
     {
         return view ('offers.create');
@@ -26,7 +31,13 @@ class OfferController extends Controller
 //     return redirect()->back()->withErrors($validator)->withInputes($request->all());
 //    }
 
+    //save photo 
+  
+$file_name=$this->saveimage($request -> photo ,'images/offers');
+
+
    Offer::create([
+    'photo'=>$file_name,
     'name_ar'=>$request->name_ar,
     'name_en'=>$request->name_en,
     'price'=> $request->price,

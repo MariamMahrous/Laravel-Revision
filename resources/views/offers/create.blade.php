@@ -113,8 +113,15 @@
 </div>
 @endif
 <br>
-                <form method="POST"  action="{{route('offers.store')}}">
+                <form method="POST"  action="{{route('offers.store')}}" enctype="multipart/form-data">
                     @csrf
+                    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">{{__('message.photo')}}</label>
+    <input type="file" class="form-control" name='photo' aria-describedby="emailHelp">
+    @error('photo')
+    <small class="form-text text-danger">{{$message}}</small>
+ @enderror
+  </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">{{__('message.name_ar')}}</label>
     <input type="text" class="form-control" name='name_ar' aria-describedby="emailHelp">

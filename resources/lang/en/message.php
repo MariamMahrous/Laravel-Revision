@@ -28,6 +28,7 @@ return[
 'offer_update'=>'Update',
 'update offer' =>'Update Offer',
 'update'=>'The Offer Update Sucessfuly',
+'photo'=>'photo'
 
 
 

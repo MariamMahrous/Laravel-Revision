@@ -29,7 +29,7 @@ return[
 'offer_update' =>'تعديل',
 'update offer' =>'تحديث العرض',
 'update'=>'تم تعديل العرض بنجاح',
-
+'photo'=>'اضافة صورة',
 
 
 
