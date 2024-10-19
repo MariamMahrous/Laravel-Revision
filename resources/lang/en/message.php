@@ -24,6 +24,11 @@ return[
 'name offer' =>'Offer Name',
 'price all'=>'Price',
 'details offer'=>'Offer Details',
+'operation'=>'operation',
+'offer_update'=>'Update',
+'update offer' =>'Update Offer',
+'update'=>'The Offer Update Sucessfuly',
+
 
 
 

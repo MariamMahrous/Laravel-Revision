@@ -25,6 +25,10 @@ return[
 'name offer' =>'اسم العرض',
 'price all' =>'السعر',
 'details offer' =>'تفاصيل العرض',
+'operation'=>'العمليات',
+'offer_update' =>'تعديل',
+'update offer' =>'تحديث العرض',
+'update'=>'تم تعديل العرض بنجاح',
 
 
 

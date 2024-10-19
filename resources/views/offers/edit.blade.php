@@ -104,7 +104,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                 {{__('message.all offer')}}
+                 {{__('message.update offer')}}
                 </div>
                 
 @if(Session::has('success'))
@@ -113,30 +113,46 @@
 </div>
 @endif
 <br>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">{{__('message.name offer')}}</th>
-      <th scope="col">{{__('message.price all')}}</th>
-      <th scope="col">{{__('message.details offer')}}</th>
-      <th scope="col">{{__('message.operation')}}</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($offers as $offer)
-    <tr>
-      <th scope="row">{{$offer->id}}</th>
-      <td>{{$offer->name}}</td>
-      <td>{{$offer->price}}</td>
-      <td>{{$offer->details}}</td>
-      <td><a href="{{url('offers/edit/'.$offer->id)}}" class="btn btn-success">{{__('message.offer_update')}}</a></td>
-
-    </tr>
-   @endforeach
-  </tbody>
-</table>  
+                <form method="POST"  action="{{route('offers.update' , $offer->id)}}">
+                    @csrf
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">{{__('message.name_ar')}}</label>
+    <input type="text" class="form-control" name='name_ar' aria-describedby="emailHelp" value="{{$offer->name_ar}}">
+    @error('name_ar')
+    <small class="form-text text-danger">{{$message}}</small>
+ @enderror
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">{{__('message.name_en')}}</label>
+    <input type="text" class="form-control" name='name_en' aria-describedby="emailHelp" value="{{$offer->name_en}}">
+    @error('name_en')
+    <small class="form-text text-danger">{{$message}}</small>
+ @enderror
+  </div>
+ 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">{{__('message.price')}}</label>
+    <input type="text" class="form-control" name='price' aria-describedby="emailHelp" value="{{$offer->price}}">
+@error('price')
+<small class="form-text text-danger">{{$message}}</small>
+@enderror
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">{{__('message.details_ar')}}</label>
+    <input type="text" class="form-control" name='details_ar' aria-describedby="emailHelp" value="{{$offer->details_ar}}">
+   @error('details_ar')
+   <small class="form-text text-danger">{{$message}}</small>
+   @enderror
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">{{__  ('message.details_en')}}</label>
+    <input type="text" class="form-control" name='details_en' aria-describedby="emailHelp" value="{{$offer->details_en}}">
+   @error('details_en')
+   <small class="form-text text-danger">{{$message}}</small>
+   @enderror
+  </div>
+  <button type="submit" class="btn btn-primary">{{__('message.update offer')}}</button>
+</form>
              
             </div>
         </div>

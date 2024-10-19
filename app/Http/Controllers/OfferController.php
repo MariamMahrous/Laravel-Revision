@@ -75,6 +75,36 @@ public function getAllOffers(){
 
 
 }
+public function edit($offer_id){
+
+    $offer= Offer::find($offer_id);
+    if(!$offer)
+        return redirect()->back();
+    
+  $offer= Offer::select('id','name_ar','name_en','price','details_ar','details_en')->find($offer_id);
+ 
+
+  return view('offers.edit',compact('offer'));
+
+
+}
+
+
+public function update(OfferRequest $request ,$offer_id){
+
+
+    //check if offer exists
+$offer=Offer::find($offer_id);
+if(!$offer)
+return redirect()->back();
+
+//update data
+$offer->update($request->all());
+
+return redirect()->back()->with(['success' =>__('message.update')]);
+
+
+}
 
 
 
