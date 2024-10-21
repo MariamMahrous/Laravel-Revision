@@ -112,6 +112,12 @@
 {{Session::get('success')}}
 </div>
 @endif
+             
+@if(Session::has('error'))
+            <div class="alert alert-success" role="alert">
+{{Session::get('error')}}
+</div>
+@endif
 <br>
 <table class="table">
   <thead>
@@ -120,6 +126,7 @@
       <th scope="col">{{__('message.name offer')}}</th>
       <th scope="col">{{__('message.price all')}}</th>
       <th scope="col">{{__('message.details offer')}}</th>
+      <th scope="col">{{__('message.offer photo')}}</th>
       <th scope="col">{{__('message.operation')}}</th>
       
     </tr>
@@ -131,7 +138,9 @@
       <td>{{$offer->name}}</td>
       <td>{{$offer->price}}</td>
       <td>{{$offer->details}}</td>
+      <td><img style="width:20px;height:20px;" src="{{asset('images/offers/'.$offer->photo)}}"></td>
       <td><a href="{{url('offers/edit/'.$offer->id)}}" class="btn btn-success">{{__('message.offer_update')}}</a></td>
+      <td><a href="{{url('offers/delete/'.$offer->id)}}" class="btn btn-danger">{{__('message.offer_delete')}}</a></td>
 
     </tr>
    @endforeach

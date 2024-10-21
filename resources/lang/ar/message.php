@@ -30,6 +30,12 @@ return[
 'update offer' =>'تحديث العرض',
 'update'=>'تم تعديل العرض بنجاح',
 'photo'=>'اضافة صورة',
+'offer_delete'=>'حذف',
+'delete_message'=>'تم حذف العرض بنجاح',
+'delete_error'=>'هذا العرض غير موجود',
+'offer photo' =>'صورة العرض'
+
+
 
 
 

@@ -28,7 +28,11 @@ return[
 'offer_update'=>'Update',
 'update offer' =>'Update Offer',
 'update'=>'The Offer Update Sucessfuly',
-'photo'=>'photo'
+'photo'=>'photo',
+'offer_delete'=>'Delete',
+'delete_message'=>'The Offer Deleted Successfuly',
+'delete_error'=>'This Offer doesnt exists',
+'offer photo' =>'Photo',
 
 
 

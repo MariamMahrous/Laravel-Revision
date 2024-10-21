@@ -34,13 +34,13 @@ Route::get('create','OfferController@create');
 
 Route::post('store', 'OfferController@store') ->name('offers.store');
 
-Route::get('index','OfferController@getAllOffers');
+Route::get('index','OfferController@getAllOffers')->name('offers.index');
 
 Route::get('edit/{offer_id}','OfferController@edit');
 
 Route::post('update/{offer_id}', 'OfferController@update') ->name('offers.update');
 
-
+Route::get('delete/{offer_id}','OfferController@delete');
 } );
 Route::get('youtube','EventController@viewPage');
 

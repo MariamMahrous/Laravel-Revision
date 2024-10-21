@@ -80,7 +80,8 @@ public function getAllOffers(){
  $offers=Offer::select('id',
  'price',
  'name_' . LaravelLocalization::getCurrentLocale() .  ' as name',
- 'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
+ 'details_'.LaravelLocalization::getCurrentLocale() . ' as details',
+ 'photo'
  )->get();
  return view('offers.index',compact('offers'));
 
@@ -115,6 +116,17 @@ $offer->update($request->all());
 return redirect()->back()->with(['success' =>__('message.update')]);
 
 
+}
+
+public function delete($offer_id){
+    
+    $offer=Offer::find($offer_id);
+    if(!$offer)
+        return redirect()->back()->with(['error'=>__('message.delete_error') ]);
+    
+   
+$offer->delete();
+return redirect()->route('offers.index')->with(['success'=>__('message.delete_message') ]);
 }
 
 
