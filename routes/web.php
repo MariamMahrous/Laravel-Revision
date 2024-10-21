@@ -42,4 +42,6 @@ Route::post('update/{offer_id}', 'OfferController@update') ->name('offers.update
 
 
 } );
+Route::get('youtube','EventController@viewPage');
+
 });
