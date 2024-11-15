@@ -45,3 +45,13 @@ Route::get('delete/{offer_id}','OfferController@delete');
 Route::get('youtube','EventController@viewPage');
 
 });
+
+########################AJAX ROUTES ####################################
+Route::group(['prefix'=>'ajax-offers'] ,function(){
+
+    Route::get('create','AjaxOfferController@create');
+    Route::post('store','AjaxOfferController@store')->name('ajax.offers.store');
+
+
+
+});
