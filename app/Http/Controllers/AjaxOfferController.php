@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\OfferTrait;
 use App\Models\Offer;
+use LaravelLocalization;
 
 class AjaxOfferController extends Controller
 {
@@ -43,4 +44,48 @@ return response()->json([
 ]);
 
 }
+
+public function index(){
+    $offers=Offer::select('id',
+       'price',
+ 'name_' . LaravelLocalization::getCurrentLocale() .  ' as name',
+ 'details_'.LaravelLocalization::getCurrentLocale() . ' as details',
+ 'photo'
+
+    )->limit(10)->get();
+    return view('ajaxoffers.index',compact('offers'));
+}
+
+public function delete(Request $request){
+$offer=Offer::find($request->id);
+
+$offer->delete();
+if($offer)
+return response()->json([
+'status'=>true,
+'msg'=>'تم الحذف بنجاح',
+'id'=>$request->id
+]);
+else
+return response()->json([
+    'status'=>false,
+    'msg'=>'fail',
+  
+    ]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
