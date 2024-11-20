@@ -53,7 +53,8 @@ Route::group(['prefix'=>'ajax-offers'] ,function(){
     Route::post('store','AjaxOfferController@store')->name('ajax.offers.store');
     Route::get('index','AjaxOfferController@index')->name('ajax.offers.index');
     Route::post('delete','AjaxOfferController@delete')->name('ajax.offers.delete');
-
+    Route::get('edit/{offer_id}','AjaxOfferController@edit')->name('ajax.offers.edit');
+    Route::post('update','AjaxOfferController@update')->name('ajax.offers.update');
 
 
 });

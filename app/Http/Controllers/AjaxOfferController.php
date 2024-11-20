@@ -74,8 +74,40 @@ return response()->json([
     ]);
 }
 
+public function edit(Request $request){
+    $offer= Offer::find($request->offer_id);
+    if(!$offer)
+    return response()->json([
+        'status'=>false,
+        'msg'=>'هذ العرض غير موجود',
+      
+        ]);
+  $offer= Offer::select('id','name_ar','name_en','price','details_ar','details_en')->find($request->offer_id);
+ 
+
+  return view('ajaxoffers.edit',compact('offer'));
+
+       
+
+}
+public function update(Request $request){
+$offer=Offer::find($request->id);
+if(!$offer)
+return response()->json([
+    'status'=>false,
+    'msg'=>'لا يوجد عرض فشل'
+]);
+$offer->update($request->all());
+ return response()->json([
+    'status'=>true,
+    'msg'=>'تم التحديث بنجاح'
+]);
 
 
+
+
+
+}
 
 
 

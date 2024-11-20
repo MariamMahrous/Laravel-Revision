@@ -27,7 +27,8 @@
       <td><img style="width:20px;height:20px;" src="{{asset('images/offers/'.$offer->photo)}}"></td>
       <td><a href="{{url('offers/edit/'.$offer->id)}}" class="btn btn-success">{{__('message.offer_update')}}</a>
       <a href="{{url('offers/delete/'.$offer->id)}}" class="btn btn-danger">{{__('message.offer_delete')}}</a>
-      <a href=""  offer_id="{{$offer->id}}"      class="delete_btn btn btn-danger">حذف اجاكس</a></td>
+      <a href=""  offer_id="{{$offer->id}}"      class="delete_btn btn btn-danger">حذف اجاكس</a>
+      <a href="{{route('ajax.offers.edit',$offer_id->id)}}"  offer_id="{{$offer->id}}" id="#update_btn"     class="btn btn-danger">تعديل اجاكس</a></td>
 
     </tr>
    @endforeach
