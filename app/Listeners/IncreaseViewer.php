@@ -26,11 +26,15 @@ class IncreaseViewer
      */
     public function handle(YoutubeViewer $event)
     {
+        if(!session()->has('videoIsVisited'))
         $this->updateViewer($event -> video);
+    else
+    return false;
     }
 
     function updateViewer($video){
      $video->viewer =  $video -> viewer + 1;
      $video->save();
+     session()->put('videoIsVisited',$video->id);
     }
 }

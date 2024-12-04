@@ -81,4 +81,11 @@ Route::post('admin/login','Auth\customAuthController@checkAdminLogin')->name('sa
 Route::get('back',function(){
     return 'not adult';
 })->name('back');
+ ########################### Begin Relations Routes #########################
 
+Route::get('has-one','RelationController@hasOneRelation');
+
+Route::get('has-one-reverse','RelationController@hasOneRelationReverse');
+
+
+     ########################### End Relations Routes #########################

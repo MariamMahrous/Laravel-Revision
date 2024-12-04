@@ -32,7 +32,7 @@ class customAuthController extends Controller
     ]);
    
     if (auth::guard('admin')->attempt(['email' => $request->email , 'password' =>$request->password])) {
-      
+  
         return redirect()->intended('/admin');
     }
     return back()->withInput($request->only('email'));
