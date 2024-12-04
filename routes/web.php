@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Http\Controllers\OfferContoller;
+use App\Http\Controllers\Auth\customAuthController;
+use App\Http\Middleware\checkeAge;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +48,7 @@ Route::get('youtube','EventController@viewPage');
 
 });
 
-########################AJAX ROUTES ####################################
+########################Begin AJAX ROUTES ####################################
 Route::group(['prefix'=>'ajax-offers'] ,function(){
 
     Route::get('create','AjaxOfferController@create');
@@ -55,6 +57,28 @@ Route::group(['prefix'=>'ajax-offers'] ,function(){
     Route::post('delete','AjaxOfferController@delete')->name('ajax.offers.delete');
     Route::get('edit/{offer_id}','AjaxOfferController@edit')->name('ajax.offers.edit');
     Route::post('update','AjaxOfferController@update')->name('ajax.offers.update');
+});
+
+########################End AJAX ROUTES ####################################
+
+
+
+######################## Begin Authentication && Guards ####################################
+
+ Route::group(['middleware'=>'checkeAge' ,'namespace'=>'Auth'],function(){
+     Route::get('adult','customAuthController@adult');
 
 
 });
+
+Route::get('site','Auth\customAuthController@site')->middleware('auth:web')->name('site');
+Route::get('admin','Auth\customAuthController@admin')->middleware('auth:admin')->name('admin');
+
+Route::get('admin/login','Auth\customAuthController@adminlogin')->name('admin.login');
+Route::post('admin/login','Auth\customAuthController@checkAdminLogin')->name('save.admin.login');
+
+######################## End Authentication && Guards ####################################
+Route::get('back',function(){
+    return 'not adult';
+})->name('back');
+
