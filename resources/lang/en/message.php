@@ -8,6 +8,7 @@ return[
 'details_ar' => 'Details In Arabic',
 'details_en' => 'Details In English',
 'save offer' => 'Save Offer',
+'photo required' =>'please enter the photo',
 'name_ar required' =>'please enter the name in arabic',
 'name_en required'=>'please enter the name in english',
 'name_ar unique'=>'name must be unique',

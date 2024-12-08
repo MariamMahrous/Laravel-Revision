@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Phone;
+use App\Models\Hospital;
+use App\Models\Doctor;
 
 
 class RelationController extends Controller
 {
+
+################ ONE TO ONE RELATIONSHIP##############
+
+
    public function hasOneRelation(){
     $user=User::with(['phone' =>function($q){
         $q->select('code','phone','user_id');
@@ -47,4 +53,72 @@ class RelationController extends Controller
      return response()->json($user);
 
    }
+
+
+   ################ ONE TO MANY RELATIONSHIP##############
+
+public function getHospitalDoctors(){
+
+//   $hospital=Hospital::with('doctors')->find(2);
+// //   $hospital=Hospital::find(2);
+// // 
+// return $hospital->name;
+
+//reverse and get all doctor
+
+// $doctors=Doctor::with('hospital')->get();
+// return $doctors;
+
+                ////get name of all doctors
+            //     $hospital=Hospital::with('doctors')->find(2);
+            //     $doctors= $hospital->doctors;
+            //   foreach($doctors as $doctor){
+            // echo $doctor->name. "<br>";
+            //   }
+
+
+}
+public function getAllHospital(){
+   
+   $hospitals=Hospital::select('id','name','address')->get();
+   return view('oneToMany.hospitals',compact('hospitals'));
+   
+  ///Get all Hospital whereDoesntHave doctor ////////
+//   $hospitals=Hospital::whereDoesntHave('doctors')->get();
+//   return view('oneToMany.hospitals',compact('hospitals'));
+ 
+ ///Get all Hospital Where Has doctor ////////
+//  $hospitals=Hospital::whereHas('doctors')->get();
+//  return view('oneToMany.hospitals',compact('hospitals'));
+
+///Get all Doctors Where Has doctor and condition ////////
+//  $hospitals=Hospital::with('doctors')->whereHas('doctors',function($q){
+//    $q->where('title','باطنة');
+//   })->first();
+//   return $hospitals;
+}
+ public function getAllDoctors($hospital_id){
+   $hospitals= Hospital::find($hospital_id);
+   $doctors=$hospitals->doctors;
+   return view('oneToMany.doctors',compact('doctors'));
+
+
+ }
+
+
+ public function deleteHospital($hospital_id){
+   $hospitals= Hospital::find($hospital_id);
+   if(!$hospitals){
+      return abort(404);
+   }
+   else{
+      $hospitals->doctors()->delete();
+      $hospitals->delete();
+      return redirect()->route('hospital-index');
+   }
+
+ }
+
+
+
 }

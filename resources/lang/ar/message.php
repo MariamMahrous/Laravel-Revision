@@ -33,7 +33,8 @@ return[
 'offer_delete'=>'حذف',
 'delete_message'=>'تم حذف العرض بنجاح',
 'delete_error'=>'هذا العرض غير موجود',
-'offer photo' =>'صورة العرض'
+'offer photo' =>'صورة العرض',
+'photo required' =>'please enter the photo',
 
 
 

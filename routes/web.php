@@ -83,9 +83,20 @@ Route::get('back',function(){
 })->name('back');
  ########################### Begin Relations Routes #########################
 
-Route::get('has-one','RelationController@hasOneRelation');
 
+                ################ ONE TO ONE RELATION ##############
+Route::get('has-one','RelationController@hasOneRelation');
 Route::get('has-one-reverse','RelationController@hasOneRelationReverse');
+     
+                 ################ ONE TO MANY RELATION ##############
+
+ Route::get('hospital-has-many','RelationController@getHospitalDoctors');
+ 
+ Route::get('hospital-index','RelationController@getAllHospital')->name('hospital-index');
+ 
+ Route::get('doctors-index/{hospital_id}','RelationController@getAllDoctors')->name('doctors-index');
+
+ Route::get('hospital-delete/{hospital_id}','RelationController@deleteHospital')->name('hospital-delete');
 
 
      ########################### End Relations Routes #########################

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Traits\OfferTrait;
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use LaravelLocalization;
 
@@ -17,7 +18,7 @@ class AjaxOfferController extends Controller
         return view('ajaxoffers.create');
     }
     
-    public function store(Request $request)
+public function store(OfferRequest $request)
     {
        
 $file_name=$this->saveimage($request -> photo ,'images/offers');
