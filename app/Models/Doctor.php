@@ -8,7 +8,7 @@ class Doctor extends Model
 {
     protected $table='doctors';
     protected $fillable=['name','title','hospital_id','created_at','updated_at'];
-    protected $hidden=['created_at','updated_at'];
+    protected $hidden=['created_at','updated_at','pivot'];
     public $timestamps=true;
 
 
@@ -16,6 +16,13 @@ class Doctor extends Model
     public function hospital(){
         return $this->belongsTo('App\Models\Hospital','hospital_id');
     }
+
+    public function services(){
+        return $this->belongsToMany('App\Models\Service','doctor_service','doctor_id','service_id');
+    }
+
+
+
 
 
 

@@ -98,5 +98,10 @@ Route::get('has-one-reverse','RelationController@hasOneRelationReverse');
 
  Route::get('hospital-delete/{hospital_id}','RelationController@deleteHospital')->name('hospital-delete');
 
+               ################ MANY TO MANY RELATIONSHIP ##############
+
+ Route::get('doctors/services','RelationController@getDoctorService');
+ Route::get('doctors-services/{doctor_id}','RelationController@getService')->name('doctors-services');
+ Route::post('save-doctor-service','RelationController@saveDoctorService')->name('save-doctor-service');
 
      ########################### End Relations Routes #########################

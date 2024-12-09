@@ -10,7 +10,7 @@
       <th scope="col">#</th>
       <th scope="col">name</th>
       <th scope="col">title</th>
-      
+      <th scope="col">Operation</th>
    
       
     </tr>
@@ -23,7 +23,8 @@
       <th scope="row">{{$doctor->id}}</th>
       <td>{{$doctor->name}}</td>
       <td>{!!$doctor->title !!}</td>
- 
+      <td> <a href="{{route('doctors-services', $doctor->id)}}"    class="delete_btn btn btn-success">عرض خدمات الاطباء</a>
+</td>
     </tr>
     @endforeach
     @endif
@@ -32,4 +33,6 @@
 
 </table>
 </div>
+
+
 @stop

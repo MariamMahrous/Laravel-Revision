@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Phone;
 use App\Models\Hospital;
 use App\Models\Doctor;
+use App\Models\Service;
 
 
 class RelationController extends Controller
@@ -119,6 +120,51 @@ public function getAllHospital(){
 
  }
 
+  ################ MANY TO MANY RELATIONSHIP##############
+  public function getDoctorService(){
 
+//  $doctor =Doctor::find(1);
+//  return $doctor->services;
+
+// $doctor =Doctor::with('services')->find(1);
+// return $doctor;
+
+
+ return $service=Service::with('doctors')->find(1);
+
+  }
+
+  public function getService($doctor_id){
+    $doctor=Doctor::find($doctor_id);
+    if(!$doctor){
+      return abort(404);
+
+    }else{
+ $services=$doctor->services;
+ $doctors=Doctor::select('id','name')->get();
+ $allServices=Service::select('id','name')->get();
+
+return view('ManyToMany.services',compact('services','doctors','allServices'));
+
+
+    }
+
+
+  }
+
+
+  public function saveDoctorService(Request $request){
+
+   $doctor=Doctor::find($request->doctor_id);
+   if(!$doctor){
+     return abort(404);
+
+   }else{
+$doctor->services()->syncWithoutDetaching($request->services);
+return 'success';
+
+
+  }
+  }
 
 }
