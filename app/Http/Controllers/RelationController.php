@@ -8,7 +8,8 @@ use App\Models\Phone;
 use App\Models\Hospital;
 use App\Models\Doctor;
 use App\Models\Service;
-
+use App\Models\Patient;
+use App\Models\Country;
 
 class RelationController extends Controller
 {
@@ -166,5 +167,34 @@ return 'success';
 
   }
   }
+
+
+  ################ Has One Through RELATIONSHIP##############
+  public function getPatientDoctor(){
+  // $patients=Patient::find(1);
+
+  // return $patients->doctor;
+
+
+  return $patients=Patient::with('doctor')->find(2);
+
+  }
+
+  ################ Has Many Through RELATIONSHIP##############
+  public function getCountryDoctor(){
+//  $countries=Country::find(2);
+//  return $countries->doctor;
+   
+  
+    return $countries=Country::with('doctor')->find(2);
+  
+    }
+  
+
+
+
+
+
+
 
 }

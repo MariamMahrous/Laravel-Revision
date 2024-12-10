@@ -104,4 +104,10 @@ Route::get('has-one-reverse','RelationController@hasOneRelationReverse');
  Route::get('doctors-services/{doctor_id}','RelationController@getService')->name('doctors-services');
  Route::post('save-doctor-service','RelationController@saveDoctorService')->name('save-doctor-service');
 
+               ################ HAS ONE THROUGH RELATIONSHIP ##############
+Route::get('has-one-through','RelationController@getPatientDoctor');
+
+    ################ HAS MANY THROUGH RELATIONSHIP ##############
+    Route::get('has-many-through','RelationController@getCountryDoctor');
+
      ########################### End Relations Routes #########################
