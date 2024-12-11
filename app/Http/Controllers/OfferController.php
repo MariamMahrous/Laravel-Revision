@@ -77,13 +77,24 @@ $file_name=$this->saveimage($request -> photo ,'images/offers');
 
 public function getAllOffers(){
 
+//  $offers=Offer::select('id',
+//  'price',
+//  'name_' . LaravelLocalization::getCurrentLocale() .  ' as name',
+//  'details_'.LaravelLocalization::getCurrentLocale() . ' as details',
+//  'photo'
+//  )->get();
+//  return view('offers.index',compact('offers'));
+
+////////////////////////////////// Pagination ///////////////////////////////
  $offers=Offer::select('id',
  'price',
  'name_' . LaravelLocalization::getCurrentLocale() .  ' as name',
  'details_'.LaravelLocalization::getCurrentLocale() . ' as details',
  'photo'
- )->get();
+ )->paginate(Pagination_Count);
  return view('offers.index',compact('offers'));
+
+
 
 
 }

@@ -17,7 +17,7 @@ use App\Http\Middleware\checkeAge;
 Route::get('/', function () {
     return view('welcome');
 });
-
+define("Pagination_Count",5);
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
@@ -45,6 +45,8 @@ Route::post('update/{offer_id}', 'OfferController@update') ->name('offers.update
 Route::get('delete/{offer_id}','OfferController@delete');
 } );
 Route::get('youtube','EventController@viewPage');
+   ########################### Pagination Routes #########################
+   Route::get('indexWithPagination','OfferController@getAllOffers')->name('offers.index');
 
 });
 
@@ -111,3 +113,4 @@ Route::get('has-one-through','RelationController@getPatientDoctor');
     Route::get('has-many-through','RelationController@getCountryDoctor');
 
      ########################### End Relations Routes #########################
+     ########################### Pagination Routes #########################
