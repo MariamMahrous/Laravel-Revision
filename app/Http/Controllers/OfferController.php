@@ -140,6 +140,21 @@ $offer->delete();
 return redirect()->route('offers.index')->with(['success'=>__('message.delete_message') ]);
 }
 
+// ///////////////////Local Scope/////////////////
+public function getAllInactiveOffers(){
+$offers =Offer::Inactive()->price()->get();
+return $offers;
+}
 
 
+// ///////////////////Global Scope/////////////////
+public function getGlobalScope(){
+    //////////Global Scope///////////
+    // $offers = Offer::get();
+    // return $offers;
+    //////////Without Global Scope///////////
+    $offers = Offer::withoutGlobalScope(OfferScopes::class)->get();
+    return $offers;
+
+    }
 }

@@ -43,6 +43,18 @@ Route::get('edit/{offer_id}','OfferController@edit');
 Route::post('update/{offer_id}', 'OfferController@update') ->name('offers.update');
 
 Route::get('delete/{offer_id}','OfferController@delete');
+
+///////////////Local Scope//////////////////
+Route::get('get-all-inactive-offers','OfferController@getAllInactiveOffers');
+
+///////////////Global Scope//////////////////
+Route::get('get-global-scope','OfferController@getGlobalScope');
+
+
+
+
+
+
 } );
 Route::get('youtube','EventController@viewPage');
    ########################### Pagination Routes #########################
